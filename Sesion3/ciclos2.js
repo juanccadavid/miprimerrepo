@@ -32,8 +32,28 @@ const estudiantes = [
     },
   ];
 
-//Metodo find
+//Metodo FIND ---> Retorna solo el primer elemento
 console.log('Estudiantes: ',estudiantes);
 let estudiante = estudiantes.find(c => c.nombre === 'Leon');
 console.log('°°°°°°°°°°°°°°°°°°°°°°°°°',estudiante);
 
+//Metodo FILTER ---> Retorna todos los elementos del Array
+
+let EstadoFactura = 7;
+const ESTADOS = [1,2,5,8];
+let sw = false;
+
+//Metodo INDEXOF ---> Devuelve la posición donde entontró el elemtno en el array, ( "-1" cuando no lo encuentra)
+let existeEstado = ESTADOS.indexOf(EstadoFactura);
+console.log(existeEstado);
+
+for (const ValorEstado of ESTADOS) {
+  if (ValorEstado === EstadoFactura) {
+    sw = true;
+    break;
+  }
+}
+console.log(sw);
+
+//Metodo FIND INDEX ---> Devuelve tambien la posiciónun True o False
+console.log(ESTADOS.findIndex(x => x > 5));
