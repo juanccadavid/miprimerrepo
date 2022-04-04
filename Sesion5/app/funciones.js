@@ -8,7 +8,7 @@ let UrlAppiClima = 'https://api.openweathermap.org/data/2.5/weather?lon=LONGITUD
 axios.get('https://api.ipify.org/?format=json')  
   .then(function (respuesta) {
   // handle success
-  const {data: {ip}} = respuesta; //Con Destructuring
+  const {data: {ip}} = respuesta; //Aplicando Destructuring
   console.log('Esta es la ip: ',ip);
 
     let UrlAppiInfo = `https://ipinfo.io/${ip}/geo`;
@@ -16,8 +16,10 @@ axios.get('https://api.ipify.org/?format=json')
       .then(function ({data:{loc}}) {
         console.log(loc.split(','));
         let [longitud , latitud ] = loc.split(',') //No Poner Espacios en el split
+
         UrlAppiClima = UrlAppiClima.replace("LONGITUD",longitud);
         UrlAppiClima = UrlAppiClima.replace("LATITUD",latitud);
+        
         console.log('Longitud: ', longitud,' Latitud: ',latitud);
         console.log('El clima es: ',UrlAppiClima);
           
@@ -40,3 +42,18 @@ axios.get('https://api.ipify.org/?format=json')
     // always executed
   });
 
+
+let UrlAppiInfo = `https://ipinfo.io/Dirección IP /geo`;
+
+const getIp =async() => {
+  const {data:{ip}} = await axios.get(UrlAppiIP);
+  return ip;
+}
+
+const getLongitudLatitud = async(ip) => {
+  UrlAppiInfo = UrlAppiInfo.replace('Dirección IP ',ip);
+  const {data:{loc}} = await axios.get(UrlAppiInfo);
+  return loc.split(',');
+}
+
+module.exports = {getIp,getLongitudLatitud}
