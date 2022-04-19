@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const db = require("./models");
 
-let corsOptions = ["http://localhost:8081", "http://localhost:8082"];
 // cors ---> Validar desde que IP's se puede consumir la API
+let corsOptions = ["http://localhost:8081", "http://localhost:8082"];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -50,6 +51,11 @@ const PORT = 8081;
 // app.listen(PORT, () => {
 //     console.log(`Server corriendo en el puerto: ${PORT}`);
 // });
+
+// Force : true --> Elimina la base de datos y la restaura
+db.sequelize.sync({ force: false }).then(()=> {
+  console.log("eliminar db");
+});
 
 const Server = app.listen(PORT, function () {
     let host = Server.address().address;
