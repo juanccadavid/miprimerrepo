@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 
 let corsOptions = ["http://localhost:8081", "http://localhost:8082"];
-
+// cors ---> Validar desde que IP's se puede consumir la API
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -24,14 +24,25 @@ app.use(
 //     origin:'http://localhost:8081',
 // };
 // Configuración CORS para ver desde donde nos pueden acceder
-app.use(cors(corsOptions));
+
+//app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extends:true}));
 
 //Configruar ruta general para cuando se levante el servidor
 //Funcion tipo apuntador , request y response
+// req ---> request , res ---> rest
 app.get("/", (req, res) => {
+    const {id,token} = req.query;
+    console.log('Destructuring: ','Id: ',id,'Token: ',token);
+    console.log("res",res,"request",req);
     res.json({ mensaje:"Bienvenidos a mi primera API con Express"});
+});
+
+app.post("/", (req, res) => {
+  const {id,token} = req.body;
+  console.log('Destructuring: ','id: ',id,'Token: ',token);
+  res.json({ mensaje:"Bienvenidos a mi primera API con Express"});
 });
 
 //Definimos el puerto
