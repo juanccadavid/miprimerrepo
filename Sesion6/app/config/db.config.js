@@ -1,7 +1,7 @@
 module.exports = {
     HOST: '10.0.0.144',
     USER: 'gesDocCmi',
-    PASSWORD: 'Arus2019**.',
+    PASSWORD:'Arus2019**.',
     DB: 'nodejs',
     dialect:"mysql",
     pool: {

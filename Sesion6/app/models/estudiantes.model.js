@@ -28,6 +28,7 @@ module.exports = (sequelize, Sequelize)=>{
 // create({std_nombre:"Pedro",std_edad:22})
 // findByPk(20)
 // finsAll({where:{std_id:1}})
-
+//update
+//destroy
 // std_nombre
 // std_edad
