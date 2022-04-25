@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize)=>{
         std_sexo : {
             type: Sequelize.STRING(1),
         },
+        std_barrio : {
+            type: Sequelize.STRING(20),
+        },
     },{
         freezeTableName: true,
         createdAt:"std_created",
