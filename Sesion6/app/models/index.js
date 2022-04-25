@@ -15,5 +15,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.estudiantes = require("./estudiantes.model.js")(sequelize, Sequelize);
+//db.estudiantes = require("./estudiantes.model.js")(sequelize, Sequelize);
+db.tareaJuanC = require("./tareaJuanC.model.js")(sequelize, Sequelize);
 module.exports=db;

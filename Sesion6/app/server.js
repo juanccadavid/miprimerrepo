@@ -46,6 +46,10 @@ app.post("/", (req, res) => {
   res.json({ mensaje:"Bienvenidos a mi primera API con Express"});
 });
 
+//Nueva ruta (routes)
+require('./routes/tareaJuanC.routes')(app);
+
+
 //Definimos el puerto
 const PORT = 8081;
 // app.listen(PORT, () => {
@@ -54,7 +58,7 @@ const PORT = 8081;
 
 // Force : true --> Elimina la base de datos y la restaura
 db.sequelize.sync({ force: false }).then(()=> {
-  console.log("eliminar db");
+  console.log("Actualización sobre la bd");
 });
 
 const Server = app.listen(PORT, function () {
